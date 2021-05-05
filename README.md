@@ -17,5 +17,5 @@ CSSを導入してからは、
 janken.js は、大量のコメントが書かれています。
 説明を省き、簡潔なコメントしたものが、janken_explain_less.jsです。
 
-## 公開先
-[じゃんけんゲーム](https://atelier-mirai-janken.netlify.app)にて、後悔しています。動作確認等にお使いください。
+## じゃんけんゲームの公開先
+[じゃんけんゲーム](https://atelier-mirai-janken.netlify.app)にて、公開しています。動作確認等にお使いください。
