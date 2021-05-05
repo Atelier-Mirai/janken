@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <!-- head には、文書に関する設定事項を書きます。 -->
+  <head>
+    <!-- 文字コードは utf-8 を使います -->
+    <meta charset="utf-8">
+    <!-- このWebページのタイトルです -->
+    <title>じゃんけんゲーム</title>
+  </head>
+
+  <!-- body には、ウェブサイトのコンテンツ（内容・出し物）を記述します -->
+  <body>
+    <!-- header タグは ウェブサイトの付帯情報やサイト名などの表示に用います -->
+    <header><h1>じゃんけんゲーム</h1></header>
+
+    <!-- main には、このページの主題(main)となるコンテンツ（内容・出し物）を記述します-->
+    <main>
+      <!-- p は 段落(paragraph)を表す際に用いるタグです -->
+      <p>
+        <!-- br タグを入れると、改行できます -->
+        みんな知っているじゃんけん。<br>
+        グーは 0, チョキは 1, パー は 2 を入れてね。
+      </p>
+
+      <input type="number" id="janken_number" value="0">
+      <button id="play">開始</button>
+    </main>
+
+    <!-- footer タグは ウェブサイトの付帯情報や著作権表示などに用います -->
+    <footer>
+      <p>
+        情報技術を夢の架け橋に<br>
+        &copy; アトリヱ未來
+      </p>
+    </footer>
+
+    <!-- JavaScriptの読み込み -->
+    <script src="janken00.js"></script>
+  </body>
+</html>
