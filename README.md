@@ -8,6 +8,7 @@
 * index0.html & janken30.js
 * index0.html & janken40.js
 * index0.html & janken50.js
+* index0.html & janken60.js
 で動作させてください。
 
 CSSを導入してからは、
