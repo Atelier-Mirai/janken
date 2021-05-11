@@ -238,8 +238,9 @@ footer div { /* footer 要素の中のdiv要素を対象に */
   ---------------------------------------------------------------------------*/
   body { /* body は全ての要素の親なので */
     display: grid; /* グリッド(格子)線を使うモードにする */
-    grid-template-columns: 20px 428px 1fr 20px; /* column(列) の設定 */
-                                                /* 左右20px 中央に428pxと残り */
+    /* column(列) の設定 */
+    /* 左右に余白 中央に428pxを二列確保 */
+    grid-template-columns: 1fr 428px 420px 1fr;
     grid-template-rows: /* row(行)を用意する */
                 [head]         100px /* 一行目の高さは100px */
                                      /* 使いやすいようheadと命名 */
