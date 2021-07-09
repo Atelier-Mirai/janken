@@ -1,0 +1,279 @@
+/*=============================================================================
+  モバイル版・デスクトップ版 共通
+=============================================================================*/
+
+/*-----------------------------------------------------------------------------
+  色の指定
+  CSSカスタムプロパティを定義
+  color: var(--kyohiiro); などのように用いることができる
+-----------------------------------------------------------------------------*/
+:root {
+  --kyohiiro:          #ff251e; /* 京緋色(きょうひいろ) */
+  --shinonomeiro:      #f19072; /* 東雲色(しののめいろ) */
+  --nanohanairo:       #ffec47; /* 菜の花色(なのはないろ) */
+  --sanaeiro:          #67a70c; /* 早苗色(さなえいろ) */
+  --amairo:            #2ca9e1; /* 天色(あまいろ) */
+  --utsushiiro:        #3d6eda; /* 移色(うつしいろ) */
+  --botaniro:          #e7609e; /* 牡丹色(ぼたんいろ) */
+  --ayameiro:          #674196; /* 菖蒲色(あやめいろ) */
+  --otomeiro:          #f3cccc; /* 乙女色(おとめいろ) */
+  --momijiiro:         #a61017; /* 紅葉色(もみじいろ) */
+  --nibiiro:           #9ea1a3; /* 鈍色(にびいろ) */
+  --kurohairo:         #0d0d0d; /* 黒羽色(くろはいろ) */
+
+  --sakurairo:         #fef4f4; /* 桜色(さくらいろ) */
+  --harukazeiro:       transparent; /* 春風色(はるかぜいろ) */
+}
+
+/*-----------------------------------------------------------------------------
+  基本設定
+-----------------------------------------------------------------------------*/
+* { /* 全ての要素(*)を対象に */
+  margin: 0;  /* 余白を0にする */
+  box-sizing: border-box;
+}
+
+img { /* 全てのimg要素を対象に */
+  width: 100%;  /* 幅を画面幅にする */
+  height: auto; /* 高さは縦横比(アスペクト比)を保つよう、自動とする */
+}
+
+/*-----------------------------------------------------------------------------
+  ページ全体の設定
+-----------------------------------------------------------------------------*/
+body { /* body は全ての要素の親なので */
+  display: grid; /* グリッド(格子)線を使うモードにする */
+  grid-template-columns: 20px 1fr 20px; /* column(列) 左右に20px 残りは中央 */
+  grid-template-rows: /* row(行)を用意する */
+              [head]     100px /* 一行目の高さは100px 使いやすいようheadと命名 */
+              [main]     auto  /* 二行目の高さは自動 titleと命名 */
+              [article]  auto  /* 三行目の高さは自動 subtitleと命名 */
+              [foot]     100px; /* 四行目の高さは100px footと命名 */
+  row-gap: 20px; /* 行の隙間は、20px */
+}
+
+/*-----------------------------------------------------------------------------
+  部品の配置
+-----------------------------------------------------------------------------*/
+body > * { /* body の直下(>) にある全ての要素(*)を対象に */
+  grid-column: 2 / -2; /* 列配置は、左から2番目の線から、右から数えて二番目(-2)の線まで */
+}
+
+/*-----------------------------------------------------------------------------
+  ヘッダー
+-----------------------------------------------------------------------------*/
+header { /* header 要素を対象に */
+  grid-row: head; /* 行の配置は、先ほど命名した headの線の下に */
+  justify-self: center; /* 左右中央揃えで配置する */
+  align-self: center;   /* 上下中央揃えで配置する */
+  font-size: 20px;      /* 書体の大きさは40px */
+  color: var(--kurohairo); /* 文字の色は、黒羽色 #0d0d0d; */
+  text-shadow: 5px 5px 5px var(--nibiiro); /* 右に5px 下に5px ずれた場所に、
+                                              ぼかし幅5px で 鈍色 #9ea1a3
+                                              の影を付ける */
+}
+
+header h1 {
+  text-align: center;
+}
+
+/*-----------------------------------------------------------------------------
+  メイン
+-----------------------------------------------------------------------------*/
+main {
+  grid-row: main;
+  margin-top: -20px;
+}
+
+main figure img {
+  max-height: 300px;
+}
+
+main p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.control_areas {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  row-gap: 20px;
+
+}
+
+.control_areas .player_hand_type {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+#guu   { background-image: url('guu.png'); }
+#choki { background-image: url('choki.png'); }
+#paa   { background-image: url('paa.png'); }
+
+.player_hand_type button {
+  background-size: 100% 100%;
+  border: none;
+  height: 100px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.score_and_replay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  align-self: center;
+}
+
+.score,
+#play {
+  font-size: 24px;
+  margin: 10px 0;
+  align-self: center;
+}
+
+.button { /* <a class="button"> と buttonクラスを付与したa要素を対象に */
+  text-decoration: none;  /* リンクには下線が付くが、飾り付け(decoration)は、無し */
+  color: white; /* 文字の色は白*/
+  border: solid 1px white; /* 枠線は、しっかりとした(solid)線で、1px幅の白で */
+  padding: 10px; /* 詰め物は、上下左右に10px で */
+  border-radius: 10px; /* 角は、半径(radius) 10pxで丸くする */
+  background: var(--amairo); /* 背景色は、天色で */
+  cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------
+  じゃんけん紹介記事
+-----------------------------------------------------------------------------*/
+article {
+  grid-row: article;
+  border:  5px double var(--utsushiiro);
+  border-radius: 1rem;
+  padding-bottom: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  margin-top: 20px;
+  justify-self: center;
+}
+
+article p {
+  font-size: 18px;
+  text-align: left;
+  padding: 1rem;
+  text-indent: 1rem;
+}
+
+article figure figcaption {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+article figure img {
+  width: 75%;
+  height: auto;
+
+  display: block;
+  margin: 0 auto;
+
+  margin-bottom: 1rem;
+}
+
+article ul li {
+  justify-self: center;
+  text-align: center;
+}
+
+/*-----------------------------------------------------------------------------
+  フッター
+-----------------------------------------------------------------------------*/
+footer { /* footer 要素を対象に */
+  grid-column: 1 / -1;  /* 列配置は、左から一番目の線から、右から数えて一番目(-1)の線まで */
+  grid-row: foot; /* 行の配置は、先ほど命名した foot の線の下 */
+  background: var(--sakurairo); /* 背景色は、桜色 */
+  margin-top: -20px; /* 他の要素との間隔(margin)を上方向に20px詰める */
+                     /* (row-gap: 20px と行間を入れているのを、打ち消す */
+  display: grid; /* グリッド(格子)線を使うモードにする */
+}
+
+footer div { /* footer 要素の中のdiv要素を対象に */
+  grid-column: 1;  /* 自動生成された1番目のグリッド線の右側に配置 */
+  grid-row: 1;     /* 自動生成された1番目のグリッド線の下側に配置 */
+  justify-self: center; /* 左右中央揃えで配置する */
+  align-self: center;   /* 上下中央揃えで配置する */
+  text-align: center;
+  font-size: 13px; /* 書体の大きさは13px */
+}
+
+footer nav ul {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+/*=============================================================================
+  デスクトップ版の追加設定
+  ★ レスポンシブ対応
+  パソコンからウェブサイトを閲覧する時代は、一つのhtmlと一つのcssですみました。
+  携帯電話が登場したことで、携帯用のウェブサイトが作られることになりました。
+  そして、パソコン用、携帯用、二つのウェブサイトを管理するのは大変です。
+  そこで、一つのhtmlとcssで、パソコン、携帯に対応させる方法が考案されました。
+  レスポンシブデザインと呼ばれる手法です。
+
+  @media は、メディアクエリと呼ばれます。
+  @media (min-width: 768px) { iPad用の追加のcss } と書くことで、
+  画面幅が、768px以上の端末(iPad や Macなど)で閲覧している時に適用される
+  追加のcssを記すことができます。
+=============================================================================*/
+@media (min-width: 768px) {
+
+  /*---------------------------------------------------------------------------
+    ページ全体の設定
+  ---------------------------------------------------------------------------*/
+  body { /* body は全ての要素の親なので */
+    display: grid; /* グリッド(格子)線を使うモードにする */
+    grid-template-columns: 20px 428px minmax(100px, 428px) 20px; /* column(列) の設定 */
+                                                /* 左右20px 中央に428pxと残り */
+    grid-template-rows: /* row(行)を用意する */
+                [head]         100px /* 一行目の高さは100px */
+                                     /* 使いやすいようheadと命名 */
+                [main article] auto  /* 二行目の高さは自動 */
+                                     /* 線の名前を main と命名 */
+                                     /* 線の名前を article と命名 */
+                                     /* 二つの線を一本の線に重ねている */
+                [foot]         100px; /* 四行目の高さは100px footと命名 */
+    row-gap: 20px; /* 行の隙間は、20px */
+  }
+
+  /* main 要素を二列目から三列目までに配置します */
+  main {
+    grid-column: 2 / 3;
+  }
+
+  /* コンピュータのじゃんけんの絵の最大高さを400pxにします */
+  main figure img {
+    max-height: 400px;
+  }
+
+  /* プレイヤーのじゃんけんボタンの高さを140pxにします */
+  .player_hand_type button {
+    height: 140px;
+  }
+
+  /* aritcle 要素を三列目から四列目までに配置します */
+  article {
+    grid-column: 3 / 4;
+    margin-left: 20px;
+  }
+
+}

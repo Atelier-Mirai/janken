@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>オセロ</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="marubatsu.css">
+
+  <style>
+  html {
+    display: grid;
+  }
+  body {
+    justify-self: center;
+  }
+
+  nav ul {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  footer {
+    margin-top: 10px;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background: rgb(102, 153, 102) none repeat scroll 0% 0%;
+  }
+
+  main {
+    justify-self: center;
+  }
+
+  #message_area,
+  #controlPanel {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .button {
+    font-size: larger;
+    width: 80%;
+    margin: 0 10%;
+  }
+
+  </style>
+
+</head>
+<body>
+  <header>
+    <h1>オセロ</h1>
+  </header>
+
+  <main>
+    <div id="message_area">
+      <p id="notification">オセロを始めましょう</p>
+      <span>●</span>:<span id="blackNumDisp"></span>
+      <span>○</span>:<span id="whiteNumDisp"></span>
+    </div>
+
+    <table>
+        <tr>
+          <td class="cell" id="cell00" onclick="cellClick(0,0)"></td>
+          <td class="cell" id="cell10" onclick="cellClick(1,0)"></td>
+          <td class="cell" id="cell20" onclick="cellClick(2,0)"></td>
+          <td class="cell" id="cell30" onclick="cellClick(3,0)"></td>
+          <td class="cell" id="cell40" onclick="cellClick(4,0)"></td>
+          <td class="cell" id="cell50" onclick="cellClick(5,0)"></td>
+          <td class="cell" id="cell60" onclick="cellClick(6,0)"></td>
+          <td class="cell" id="cell70" onclick="cellClick(7,0)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell01" onclick="cellClick(0,1)"></td>
+          <td class="cell" id="cell11" onclick="cellClick(1,1)"></td>
+          <td class="cell" id="cell21" onclick="cellClick(2,1)"></td>
+          <td class="cell" id="cell31" onclick="cellClick(3,1)"></td>
+          <td class="cell" id="cell41" onclick="cellClick(4,1)"></td>
+          <td class="cell" id="cell51" onclick="cellClick(5,1)"></td>
+          <td class="cell" id="cell61" onclick="cellClick(6,1)"></td>
+          <td class="cell" id="cell71" onclick="cellClick(7,1)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell02" onclick="cellClick(0,2)"></td>
+          <td class="cell" id="cell12" onclick="cellClick(1,2)"></td>
+          <td class="cell" id="cell22" onclick="cellClick(2,2)"></td>
+          <td class="cell" id="cell32" onclick="cellClick(3,2)"></td>
+          <td class="cell" id="cell42" onclick="cellClick(4,2)"></td>
+          <td class="cell" id="cell52" onclick="cellClick(5,2)"></td>
+          <td class="cell" id="cell62" onclick="cellClick(6,2)"></td>
+          <td class="cell" id="cell72" onclick="cellClick(7,2)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell03" onclick="cellClick(0,3)"></td>
+          <td class="cell" id="cell13" onclick="cellClick(1,3)"></td>
+          <td class="cell" id="cell23" onclick="cellClick(2,3)"></td>
+          <td class="cell" id="cell33" onclick="cellClick(3,3)">●</td>
+          <td class="cell" id="cell43" onclick="cellClick(4,3)">●</td>
+          <td class="cell" id="cell53" onclick="cellClick(5,3)"></td>
+          <td class="cell" id="cell63" onclick="cellClick(6,3)"></td>
+          <td class="cell" id="cell73" onclick="cellClick(7,3)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell04" onclick="cellClick(0,4)"></td>
+          <td class="cell" id="cell14" onclick="cellClick(1,4)"></td>
+          <td class="cell" id="cell24" onclick="cellClick(2,4)"></td>
+          <td class="cell" id="cell34" onclick="cellClick(3,4)">●</td>
+          <td class="cell" id="cell44" onclick="cellClick(4,4)">●</td>
+          <td class="cell" id="cell54" onclick="cellClick(5,4)"></td>
+          <td class="cell" id="cell64" onclick="cellClick(6,4)"></td>
+          <td class="cell" id="cell74" onclick="cellClick(7,4)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell05" onclick="cellClick(0,5)"></td>
+          <td class="cell" id="cell15" onclick="cellClick(1,5)"></td>
+          <td class="cell" id="cell25" onclick="cellClick(2,5)"></td>
+          <td class="cell" id="cell35" onclick="cellClick(3,5)"></td>
+          <td class="cell" id="cell45" onclick="cellClick(4,5)"></td>
+          <td class="cell" id="cell55" onclick="cellClick(5,5)"></td>
+          <td class="cell" id="cell65" onclick="cellClick(6,5)"></td>
+          <td class="cell" id="cell75" onclick="cellClick(7,5)"></td>
+        </tr>
+        <tr>
+          <td class="cell" id="cell06" onclick="cellClick(0,6)"></td>
+          <td class="cell" id="cell16" onclick="cellClick(1,6)"></td>
+          <td class="cell" id="cell26" onclick="cellClick(2,6)"></td>
+          <td class="cell" id="cell36" onclick="cellClick(3,6)"></td>
+          <td class="cell" id="cell46" onclick="cellClick(4,6)"></td>
+          <td class="cell" id="cell56" onclick="cellClick(5,6)"></td>
+          <td class="cell" id="cell66" onclick="cellClick(6,6)"></td>
+          <td class="cell" id="cell76" onclick="cellClick(7,6)"></td>
+        </tr>
+        <tr>
+        <td class="cell" id="cell07" onclick="cellClick(0,7)"></td>
+        <td class="cell" id="cell17" onclick="cellClick(1,7)"></td>
+        <td class="cell" id="cell27" onclick="cellClick(2,7)"></td>
+        <td class="cell" id="cell37" onclick="cellClick(3,7)"></td>
+        <td class="cell" id="cell47" onclick="cellClick(4,7)"></td>
+        <td class="cell" id="cell57" onclick="cellClick(5,7)"></td>
+        <td class="cell" id="cell67" onclick="cellClick(6,7)"></td>
+        <td class="cell" id="cell77" onclick="cellClick(7,7)"></td>
+        </tr>
+      </table>
+
+    <form id="controlPanel">
+      <span>●: </span>
+      <input type="radio" name="blackMenu" value="1" id="black_player" checked>
+      <label for="black_player">人間</label>
+      <input type="radio" name="blackMenu" value="2" id="black_computer_level1">
+      <label for="black_computer_level1">CPU Lv1</label>
+      <input type="radio" name="blackMenu" value="3" id="black_computer_level2">
+      <label for="black_computer_level2">CPU Lv2</label>
+      <br>
+      <span>○: </span>
+      <input type="radio" name="whiteMenu" value="1" id="white_player">
+      <label for="white_player">人間</label>
+      <input type="radio" name="whiteMenu" value="2" id="white_computer_level1" checked>
+      <label for="white_computer_level1">CPU Lv1</label>
+      <input type="radio" name="whiteMenu" value="3" id="white_computer_level2">
+      <label for="white_computer_level2">CPU Lv2</label>
+    </form>
+    <button class="button" onClick="othelloStartClick()">ゲーム開始</button>
+  </main>
+
+  <article>
+    <div>
+      <p>オセロは、黒（先手）と白（後手）の駒を交互に盤面に配置し、最終的にどちらの駒が多く残るかを競う陣取りボードゲームです。</p>
+      <p>
+        詳しくは、<a href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%BB%E3%83%AD_(%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0)">ウィキペディア</a>を見てね。
+      </p>
+    </div>
+
+    <figure>
+      <figcaption>オセロ</figcaption>
+      <img src="images/othello.jpg" alt="オセロ">
+
+      <p>
+        <p>自分の駒を相手の駒を挟むように配置すると、はさまれた相手の駒をすべてひっくり返すことが出来ます。駒は相手の駒を挟んでひっくり返せるように置きます。どこに置いても相手の駒をひっくり返せない時には、パスとなり、続けて相手の手番となります。</p>
+        <p>なるべく相手の駒をはさみやすい配置、また相手にひっくり返されにくい配置を作り、ゲーム終盤に逆転されにくい堅固な陣地を築きましょう。</p>
+        <p>オセロでは、すべてのマスが埋まるか、双方がパスになったり一方の駒が全滅するとゲーム終了となります。</p>
+        <p>黒と白のプレイヤーを選択し、ゲーム開始ボタンをクリックすると対局開始です。CPU Lv2は思考処理を強化してあります。</p>
+      </p>
+    </figure>
+  </article>
+
+  <footer>
+    <div class="container">
+      <nav>
+        <ul>
+          <li> <a href="index.html">じゃんけん</a> </li>
+          <li> <a href="marubatsu.html">○×ゲーム</a> </li>
+          <li> <a href="othello.html">オセロ</a> </li>
+        </ul>
+      </nav>
+
+      <p>情報技術を夢の架け橋に</p>
+      <p>&copy; アトリヱ未來</p>
+    </div>
+  </footer>
+
+  <script src="othello.js"></script>
+</body>
+</html>

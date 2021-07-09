@@ -10,7 +10,7 @@ const GUU   = 0; // グー
 const CHOKI = 1; // チョキ
 const PAA   = 2; // パー
 
-const FPS   = 24; // 一秒間あたり、何コマ（フレーム）を表示するか？
+const FPS   = 24; // 一秒間あたり、24コマ表示する
 
 // グローバル変数宣言
 let isPause = true;   // グー・チョキ・パーの切替アニメを制御するための変数

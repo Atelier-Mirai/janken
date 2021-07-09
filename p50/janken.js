@@ -6,18 +6,16 @@
 const playButton  = document.getElementById("play");
 playButton.addEventListener('click', jankenHandler);
 
-// メイン処理
 // player の手を取得
-const jankenInputBox = document.getElementById("janken_number");
-let player = parseInt(jankenInputBox.value);
+const inputBox = document.getElementById("player_hand_type");
+let player = parseInt(inputBox.value);
 
 // conputer の手を設定
 let computer = 0; // グー
 
 // じゃんけんの勝ち負けの結果を表示する関数
 function jankenHandler(event) {
-  // === は「等価演算子」です。
-  // 「等しい」ことを調べます。
+  // === は「等価演算子」で、「等しい」ことを調べます。
   if (player === 0) {
     // プレイヤーがグーの時に行う処理を記します。
     // ここでは、alert文を使い、画面表示します。
@@ -25,7 +23,7 @@ function jankenHandler(event) {
   } else if (player === 1) {
     // プレイヤーがチョキの時の処理を記します。
     alert("あなたの負けです!");
-  } else if (player === 2) {
+  } else {
     // プレイヤーがパーの時の処理を記します。
     alert("あなたの勝ちです!");
   }
