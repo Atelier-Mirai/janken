@@ -86,8 +86,6 @@ header h1 {
 --------------------------------------------------------------*/
 main { /* main 要素を対象に */
   grid-row: main; /* 行の配置は先ほど命名した main の線の下 */
-  margin-top: -20px; /* row-gap で行間があくので、
-                        上にずらして隙間を無くす */
 }
 
 main figure img {     /* コンピュータのじゃんけんの絵です。 */
@@ -170,7 +168,7 @@ main p {                 /* じゃんけんの説明文です */
 }
 
 /*-------------------------------------------------------------
-  じゃんけん紹介記事
+  紹介記事
 --------------------------------------------------------------*/
 article { /* aritcle 要素を対象に */
   /* 行の配置は、先ほど命名した article の線の下に */
@@ -229,6 +227,61 @@ article ul li {         /* aritcle内の ul内の li要素を対象に */
   justify-self: center; /* 水平方向に中央揃え */
   text-align: center;   /* 文字は中央揃え */
 }
+
+/*-----------------------------------------------------------------------------
+  ○×ゲームの対戦表
+-----------------------------------------------------------------------------*/
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+td {
+  border-collapse: collapse;
+  cursor: pointer;
+  border: solid 1px black;
+  background: mediumseagreen;
+  font-size: 80px;
+  line-height: 1;
+  color: white;
+  height: 100px;
+  width: 100px;
+  padding: 0;
+  text-align: center;
+}
+
+#notification {
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  margin: 0 auto;
+}
+#notification p {
+  font-size: 24px;
+}
+
+/*-----------------------------------------------------------------------------
+オセロゲーム
+-----------------------------------------------------------------------------*/
+.cell {
+  width: 40px;
+  height: 40px;
+  font-size: 32px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background: rgb(102, 153, 102) none repeat scroll 0% 0%;
+}
+
+#message_area,
+#controlPanel {
+  text-align: center;
+  margin: 10px 0;
+}
+
 
 /*-------------------------------------------------------------
   フッター
